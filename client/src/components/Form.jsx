@@ -4,9 +4,8 @@ import connexion from "../services/connexion";
 const initialTask = {
   task: "",
   who: "",
-  deadLine: "",
-  style_id: "",
-  status_id: null,
+  deadline: "",
+  id_status: null,
 };
 
 function Form() {
@@ -35,9 +34,40 @@ function Form() {
           value={task.task}
           name="task"
           onChange={(event) => handleTask(event)}
+          required
         />
       </label>
-      <button type="submit">Add a task</button>
+      <label>
+        Who:
+        <input
+          type="text"
+          value={task.who}
+          name="who"
+          onChange={(event) => handleTask(event)}
+          required
+        />
+      </label>
+      <label>
+        Deadline:
+        <input
+          type="text"
+          value={task.deadline}
+          name="deadline"
+          onChange={(event) => handleTask(event)}
+          required
+        />
+      </label>
+      <label>
+        Status:
+        <input
+          type="number"
+          value={task.id_status}
+          name="id_status"
+          onChange={(event) => handleTask(event)}
+          required
+        />
+      </label>
+      <button type="submit">Add</button>
     </form>
   );
 }
