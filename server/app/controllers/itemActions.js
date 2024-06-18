@@ -5,10 +5,12 @@ const client = require("../../database/client");
 const browse = async (req, res, next) => {
   try {
     // Fetch all items from the database
-    const items = await client.query("SELECT * FROM items");
+    const [tasks] = await client.query(
+      "SELECT * FROM tasks INNER JOIN status ON tasks.id_status = status.id"
+    );
 
     // Respond with the items in JSON format
-    res.json(items);
+    res.status(200).json(tasks);
   } catch (err) {
     // Pass any errors to the error-handling middleware
     next(err);
@@ -46,9 +48,10 @@ const add = async (req, res, next) => {
 
   try {
     // Insert the item into the database
-    const insertId = await client.query("INSERT INTO items(title) VALUES (?)", [
-      item.title,
-    ]);
+    const insertId = await client.query(
+      "INSERT INTO tasks (id_status,task, deadline, who) VALUES (?,?, ?, ?);",
+      [item.id_status, item.task, item.deadline, item.who]
+    );
 
     // Respond with HTTP 201 (Created) and the ID of the newly inserted item
     res.status(201).json({ insertId });
