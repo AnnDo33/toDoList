@@ -5,7 +5,7 @@ CREATE TABLE status (
 
 CREATE TABLE tasks (
   id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-  id_status INT,
+  id_status INT NOT NULL,
   task VARCHAR(255) NOT NULL,
   deadline DATE NOT NULL,
   who VARCHAR(50) NOT NULL,

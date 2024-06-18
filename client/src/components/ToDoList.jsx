@@ -3,7 +3,7 @@ function ToDoList({ task }) {
     <div>
       <h2>{task.task}</h2>
       <h4>Who : {task.who}</h4>
-      <p>Deadline {task.deadLine}</p>
+      <p>Deadline {task.deadline}</p>
       <p>Status: {task.status}</p>
     </div>
   );
