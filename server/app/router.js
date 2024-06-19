@@ -22,6 +22,8 @@ router.get("/items/:id", itemActions.read);
 // Route to add a new item
 router.post("/tasks", itemActions.add);
 
+router.delete("/tasks", itemActions.destroy);
+
 /* ************************************************************************* */
 
 module.exports = router;
